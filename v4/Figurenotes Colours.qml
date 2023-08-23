@@ -1,6 +1,6 @@
 //====================================================================================
 //  Figurenotes Colours QML Plugin for Drake Music Scotland
-//  (C)2023 Bas Gentenaar (figurenotes@drakemusicscotland.org)
+//  (C)2020-23 Bas Gentenaar (figurenotes@drakemusicscotland.org)
 //
 //  Drake Music Scotland Figurenotes Project Figurenotes (C) Kaarlo Uusitalo, 1996 
 //  Figurenotes applications (C) Markku Kaikkonen and Kaarlo Uusitalo, 1998 

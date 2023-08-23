@@ -1,6 +1,6 @@
 //====================================================================================
 //  Figurenotes Shapes QML Plugin for Drake Music Scotland
-//  (C)2020 Bas Gentenaar (figurenotes@drakemusicscotland.org)
+//  (C)2020-23 Bas Gentenaar (figurenotes@drakemusicscotland.org)
 //
 //  Drake Music Scotland Figurenotes Project Figurenotes (C) Kaarlo Uusitalo, 1996 
 //  Figurenotes applications (C) Markku Kaikkonen and Kaarlo Uusitalo, 1998 
@@ -18,7 +18,7 @@
 //  the file LICENCE.GPL
 //===================================================================================
 
-import QtQuick 2.2
+import QtQuick 2.9
 import MuseScore 3.0
 
 MuseScore {
