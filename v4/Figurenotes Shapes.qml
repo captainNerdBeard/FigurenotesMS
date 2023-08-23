@@ -19,13 +19,21 @@
 //===================================================================================
 
 import QtQuick 2.2
-import MuseScore 4.0
+import MuseScore 3.0
 
 MuseScore {
       version:  "4.0"
       description: qsTr("This plugin shapes noteheads in the selection depending on their pitch as per the Figurenotes System")
       menuPath: "Plugins.Figurenotes.Shapes"
-      thumbnailName: "color_notes_six_six.png"
+      thumbnailName: "FNMS_thumb.png"
+      id: figurenotesShapes
+      Component.onCompleted: {
+            if (mscoreMajorVersion >= 4){
+                  figurenotesShapes.title = "Figurenotes Shapes";
+                  figurenotesShapes.categoryCode = "color-notes";
+                  figurenotesShapes.thumbnailName = "FNMS_thumb.png";
+                  }
+      }
       property variant colors : [ // "#rrggbb" with rr, gg, and bb being the hex values for red, green, and blue, respectively
                "#FF0000", // C
                "#FF0000", // C#/Db
@@ -117,6 +125,12 @@ MuseScore {
 
             applyToNotesInSelection(changeShape)
 
+            if (typeof quit === "undefined") {
+            // MuseScore 3
             Qt.quit();
+        } else {
+            // MuseScore 4
+            quit();
+        }
          }
 }
