@@ -55,6 +55,7 @@ MuseScore {
       // or, if nothing is selected, in the entire score
 
       function applyToNotesInSelection(func) {
+            curScore.startCmd();
             var cursor = curScore.newCursor();
             cursor.rewind(1);
             var startStaff;
@@ -131,6 +132,7 @@ MuseScore {
                               note.dots[i].color = black;
                         }
                   }
+                  curScore.endCmd();
          }
 
       onRun: {

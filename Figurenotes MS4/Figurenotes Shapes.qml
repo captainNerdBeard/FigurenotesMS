@@ -54,6 +54,7 @@ MuseScore {
       // or, if nothing is selected, in the entire score
 
       function applyToNotesInSelection(func) {
+            curScore.startCmd();
             var cursor = curScore.newCursor();
             cursor.rewind(1);
             var startStaff;
@@ -107,6 +108,7 @@ MuseScore {
                         }
                   }
             }
+            curScore.endCmd();
       }
 
       function changeShape(note){
