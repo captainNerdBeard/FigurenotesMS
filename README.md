@@ -1,4 +1,4 @@
-![FNMS_thumb.png]
+![Figurenotes](FNMS_thumb.png)
 
 # Figurenotes Stage 3 in MuseScore 4
 
