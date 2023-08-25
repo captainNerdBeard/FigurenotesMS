@@ -5,7 +5,7 @@
 ## Installing the plugin
 
 1. Copy the entire 'Figurenotes MS4' folder into Musescore's plugin folder
-   (C:/Program Files/Musescore/plugins on PC and ~/documents/musescore3/plugins on Mac)
+   (C:/Program Files/Musescore/plugins on PC and ~/documents/musescore4/plugins on Mac)
 2. Open Musescore and go to Plugins/Manage Plugins
 3. Click on each Figurenotes Plugin in turn and click the 'Enable' Button
 
