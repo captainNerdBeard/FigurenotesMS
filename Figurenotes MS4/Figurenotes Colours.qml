@@ -32,6 +32,7 @@ MuseScore {
                   figurenotesColours.title = "Figurenotes Colours";
                   figurenotesColours.categoryCode = "color-notes";
                   figurenotesColours.thumbnailName = "FNMS_thumb.png";
+                  figurenotesColours.menuPath = "Plugins.Figurenotes.Colours" //Show it in Plugin Menu
                   }
       }
 

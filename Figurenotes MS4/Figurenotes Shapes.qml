@@ -32,6 +32,7 @@ MuseScore {
                   figurenotesShapes.title = "Figurenotes Shapes";
                   figurenotesShapes.categoryCode = "color-notes";
                   figurenotesShapes.thumbnailName = "FNMS_thumb.png";
+                  figurenotesColours.menuPath = "Plugins.Figurenotes.Shapes" //Show it in Plugin Menu
                   }
       }
       property variant colors : [ // "#rrggbb" with rr, gg, and bb being the hex values for red, green, and blue, respectively
