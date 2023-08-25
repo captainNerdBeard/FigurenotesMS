@@ -35,22 +35,17 @@ MuseScore {
                   figurenotesColours.menuPath = "Plugins.Figurenotes.Colours" //Show it in Plugin Menu
                   }
       }
+      property string noteC : "#FF0000";
+      property string noteD : "#946133";
+      property string noteE : "#C6C4C1";
+      property string noteF : "#0090D8";
+      property string noteG : "#1A1919";
+      property string noteA : "#F7E200";
+      property string noteB : "#35A221";
+      
+      property string black : "#000000";
 
-      property variant colors : [ // "#rrggbb" with rr, gg, and bb being the hex values for red, green, and blue, respectively
-               "#FF0000", // C
-               "#FF0000", // C#/Db
-               "#946133", // D
-               "#946133", // D#/Eb
-               "#c6c4c1", // E
-               "#0090d8", // F
-               "#0090d8", // F#/Gb
-               "#1a1919", // G
-               "#1a1919", // G#/Ab
-               "#f7e200", // A
-               "#f7e200", // A#/Bb
-               "#35a211"  // B
-               ]
-      property string black : "#000000"
+property variant colors : [ noteF, noteC, noteG, noteD, noteA, noteE, noteB, noteF, noteC, noteG, noteD, noteA, noteE, noteB, noteF, noteC, noteG, noteD, noteA, noteE, noteB, noteF, noteC, noteG, noteD, noteA, noteE, noteB, noteF, noteC, noteG, noteD, noteA, noteE, noteB  ]
 
       // Apply the given function to all notes in selection
       // or, if nothing is selected, in the entire score
@@ -81,7 +76,7 @@ MuseScore {
                   }
                   endStaff = cursor.staffIdx;
             }
-            console.log(startStaff + " - " + endStaff + " - " + endTick)
+            // console.log(startStaff + " - " + endStaff + " - " + endTick)
             for (var staff = startStaff; staff <= endStaff; staff++) {
                   for (var voice = 0; voice < 4; voice++) {
                         cursor.rewind(1); // sets voice to 0
@@ -113,40 +108,42 @@ MuseScore {
       }
 
       function colorNote(note) {
-            if (note.color == black)
-                  note.color = colors[note.pitch % 12];
-            else
+            if (note.color == black) {
+                  note.color = colors[note.tpc+1];
+			} else {
                   note.color = black;
-
+            } 
             if (note.accidental) {
-                  if (note.accidental.color == black)
-                        note.accidental.color = colors[note.pitch % 12];
-                  else
-                        note.accidental.color = black;
-                  }
-
+				if (note.accidental.color == black) {
+					note.accidental.color = colors[note.tpc+1];
+					} else {
+					note.accidental.color = black;
+					}
+			}
+						
             for (var i = 0; i < note.dots.length; i++) {
                   if (note.dots[i]) {
-                        if (note.dots[i].color == black)
-                              note.dots[i].color = colors[note.pitch % 12];
-                        else
+                        if (note.dots[i].color == black) {
+                              note.dots[i].color = colors[note.tpc+1];
+				} else {
                               note.dots[i].color = black;
                         }
                   }
+			}
                   curScore.endCmd();
-         }
+      }
 
       onRun: {
-            console.log("hello figurenotes colours");
+            console.log("Figurenotes Colours!");
 
             applyToNotesInSelection(colorNote)
 
-        if (typeof quit === "undefined") {
+      if (typeof quit === "undefined") {
             // MuseScore 3
             Qt.quit();
-        } else {
+            } else {
             // MuseScore 4
             quit();
-        }
-         }
+      }
+      }
 }

@@ -35,21 +35,6 @@ MuseScore {
                   figurenotesColours.menuPath = "Plugins.Figurenotes.Shapes" //Show it in Plugin Menu
                   }
       }
-      property variant colors : [ // "#rrggbb" with rr, gg, and bb being the hex values for red, green, and blue, respectively
-               "#FF0000", // C
-               "#FF0000", // C#/Db
-               "#946133", // D
-               "#946133", // D#/Eb
-               "#c6c4c1", // E
-               "#0090d8", // F
-               "#0090d8", // F#/Gb
-               "#1a1919", // G
-               "#1a1919", // G#/Ab
-               "#f7e200", // A
-               "#f7e200", // A#/Bb
-               "#35a211"  // B
-               ]
-      property string black : "#000000"
 
       // Apply the given function to all notes in selection
       // or, if nothing is selected, in the entire score
@@ -113,27 +98,26 @@ MuseScore {
       }
 
       function changeShape(note){
-                if (note.pitch >= 36) {note.headGroup = 1;}
-                if (note.pitch >= 48) {note.headGroup = 17;}
-                if (note.pitch >= 60) {note.headGroup = 0;}
-                if (note.pitch >= 72) {note.headGroup = 5;}
-                if (note.pitch >= 84) {note.headGroup = 10;}
-                if (note.pitch >= 96) {note.headGroup = 15;}
-                                                  
-        }
+            if (note.pitch >= 36) {note.headGroup = 1;}
+            if (note.pitch >= 48) {note.headGroup = 17;}
+            if (note.pitch >= 60) {note.headGroup = 0;}
+            if (note.pitch >= 72) {note.headGroup = 5;}
+            if (note.pitch >= 84) {note.headGroup = 10;}
+            if (note.pitch >= 96) {note.headGroup = 15;}
+            }
 
 
       onRun: {
-            console.log("hello figurenotes shapes");
+            console.log("Figurenotes Shapes!");
 
             applyToNotesInSelection(changeShape)
 
             if (typeof quit === "undefined") {
             // MuseScore 3
             Qt.quit();
-        } else {
+      } else {
             // MuseScore 4
             quit();
-        }
-         }
+      }
+      }
 }
