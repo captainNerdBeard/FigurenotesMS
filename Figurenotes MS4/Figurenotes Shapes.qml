@@ -29,7 +29,7 @@ MuseScore {
       id: figurenotesShapes
       Component.onCompleted: {
             if (mscoreMajorVersion >= 4){
-                  figurenotesShapes.title = "Figurenotes Shapes";
+                  figurenotesShapes.title = "Figurenotes Shapes Testing";
                   figurenotesShapes.categoryCode = "color-notes";
                   figurenotesShapes.thumbnailName = "FNMS_thumb.png";
                   figurenotesColours.menuPath = "Plugins.Figurenotes.Shapes" //Show it in Plugin Menu
@@ -99,9 +99,9 @@ MuseScore {
 
       function changeShape(note){
             if (note.pitch >= 36) {note.headGroup = 1;}
-            if (note.pitch >= 48) {note.headGroup = 17;}
+            if (note.pitch >= 48) {note.headGroup = 17;} //not working?
             if (note.pitch >= 60) {note.headGroup = 0;}
-            if (note.pitch >= 72) {note.headGroup = 5;}
+            if (note.pitch >= 72) {note.headGroup = 5;} 
             if (note.pitch >= 84) {note.headGroup = 10;}
             if (note.pitch >= 96) {note.headGroup = 15;}
             }
