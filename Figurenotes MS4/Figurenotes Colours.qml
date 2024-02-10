@@ -22,6 +22,12 @@ import QtQuick 2.9
 import MuseScore 3.0
 
 MuseScore {
+
+//====================================================================================
+// We Identify the plugin and give it a place in the MuseScore menu, we also initialise some strings (colours)
+//====================================================================================
+
+
       version:  "4.0"
       description: qsTr("This plugin colours notes in the selection depending on their pitch as per the Figurenotes System")
       menuPath: "Plugins.Figurenotes.Colours"
@@ -45,10 +51,12 @@ MuseScore {
       
       property string black : "#000000";
 
-property variant colors : [ noteF, noteC, noteG, noteD, noteA, noteE, noteB, noteF, noteC, noteG, noteD, noteA, noteE, noteB, noteF, noteC, noteG, noteD, noteA, noteE, noteB, noteF, noteC, noteG, noteD, noteA, noteE, noteB, noteF, noteC, noteG, noteD, noteA, noteE, noteB  ]
+      property variant colors : [ noteF, noteC, noteG, noteD, noteA, noteE, noteB, noteF, noteC, noteG, noteD, noteA, noteE, noteB, noteF, noteC, noteG, noteD, noteA, noteE, noteB, noteF, noteC, noteG, noteD, noteA, noteE, noteB, noteF, noteC, noteG, noteD, noteA, noteE, noteB  ]
 
-      // Apply the given function to all notes in selection
-      // or, if nothing is selected, in the entire score
+//====================================================================================
+// Apply the given function to all notes in selection or, if nothing is selected, in the entire score
+//====================================================================================
+
 
       function applyToNotesInSelection(func) {
             curScore.startCmd();
@@ -58,11 +66,15 @@ property variant colors : [ noteF, noteC, noteG, noteD, noteA, noteE, noteB, not
             var endStaff;
             var endTick;
             var fullScore = false;
+
+      //If nothing is selected, use the whole score:
             if (!cursor.segment) { // no selection
                   fullScore = true;
                   startStaff = 0; // start with 1st staff
                   endStaff = curScore.nstaves - 1; // and end with last
-            } else {
+            }
+            //Otherwise, use only the selected bits:
+            else {
                   startStaff = cursor.staffIdx;
                   cursor.rewind(2);
                   if (cursor.tick === 0) {
@@ -98,7 +110,7 @@ property variant colors : [ noteF, noteC, noteG, noteD, noteA, noteE, noteB, not
                                     var notes = cursor.element.notes;
                                     for (var k = 0; k < notes.length; k++) {
                                           var note = notes[k];
-                                          func(note);
+                                          func(note); // <-- DO THE THING TO THE NOTE
                                     }
                               }
                               cursor.next();
@@ -106,6 +118,9 @@ property variant colors : [ noteF, noteC, noteG, noteD, noteA, noteE, noteB, not
                   }
             }
       }
+//====================================================================================
+// Do this to all notes in the selection:
+//====================================================================================
 
       function colorNote(note) {
             if (note.color == black) {
@@ -130,20 +145,22 @@ property variant colors : [ noteF, noteC, noteG, noteD, noteA, noteE, noteB, not
                         }
                   }
 			}
-                  curScore.endCmd();
       }
 
+//====================================================================================
+// Run this plugin when we choose it from the menu
+//====================================================================================
       onRun: {
             console.log("Figurenotes Colours!");
-
-            applyToNotesInSelection(colorNote)
-
-      if (typeof quit === "undefined") {
-            // MuseScore 3
+            
+            applyToNotesInSelection(colorNote);
+            
+            curScore.endCmd();
+            
+            if (typeof quit === "undefined") {
             Qt.quit();
             } else {
-            // MuseScore 4
             quit();
-      }
+            }
       }
 }

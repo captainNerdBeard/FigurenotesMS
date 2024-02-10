@@ -76,9 +76,7 @@ function applyToNotesInSelection(func) {
             endStaff = cursor.staffIdx;
       }
       
-      //Apply 'func' parameter to all notes in the selection
-
-      console.log(startStaff + " - " + endStaff + " - " + endTick)
+      // console.log(startStaff + " - " + endStaff + " - " + endTick)
       for (var staff = startStaff; staff <= endStaff; staff++) {
             for (var voice = 0; voice < 4; voice++) {
                   cursor.rewind(1); // sets voice to 0
@@ -100,14 +98,14 @@ function applyToNotesInSelection(func) {
                               var notes = cursor.element.notes;
                               for (var k = 0; k < notes.length; k++) {
                                     var note = notes[k];
-                                    func(note);
+                                    func(note); // <-- DO THE THING TO THE NOTE
                               }
                         }
                         cursor.next();
                   }
             }
       }
-      curScore.endCmd();
+      
 }
 
 //====================================================================================
@@ -119,12 +117,12 @@ function changeShape(note){
 //TODO: Add another IF Statement that first tests the headgroup, if "0" it changes, if not "0" it changes it to "0" instead
 //In other words, we could theoretically toggle the shapes!
 
-      if (note.pitch >= 36) {note.headGroup = 1;}     //1
-      if (note.pitch >= 48) {note.headGroup = 17;}    //17, and not working?
-      if (note.pitch >= 60) {note.headGroup = 0;}     //0
-      if (note.pitch >= 72) {note.headGroup = 5;}     //5
-      if (note.pitch >= 84) {note.headGroup = 10;}    //10 
-      if (note.pitch >= 96) {note.headGroup = 15;}    //15
+      if (note.pitch >= 36) {note.headGroup = 1;}     //1   Crosses
+      if (note.pitch >= 48) {note.headGroup = 18;}    //18  Squares
+      if (note.pitch >= 60) {note.headGroup = 0;}     //0   Circles    
+      if (note.pitch >= 72) {note.headGroup = 5;}     //5   Triangles
+      if (note.pitch >= 84) {note.headGroup = 10;}    //10  Diamonds
+      if (note.pitch >= 96) {note.headGroup = 15;}    //15  Slashes
       }
 
 //====================================================================================
@@ -133,7 +131,11 @@ function changeShape(note){
 
       onRun: {
             console.log("Figurenotes Shapes!");
+            
             applyToNotesInSelection(changeShape);
+            
+            curScore.endCmd();
+            
             if (typeof quit === "undefined") {
             Qt.quit();
             } else {
