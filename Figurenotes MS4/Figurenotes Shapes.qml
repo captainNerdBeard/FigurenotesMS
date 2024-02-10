@@ -122,7 +122,6 @@ function changeShape(note){
             if (note.pitch >= 72) {note.headGroup = 5;}     //5   Triangles
             if (note.pitch >= 84) {note.headGroup = 10;}    //10  Diamonds
             if (note.pitch >= 96) {note.headGroup = 15;}    //15  Slashes
-     
       }
 
 //====================================================================================
