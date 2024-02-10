@@ -114,15 +114,15 @@ function applyToNotesInSelection(func) {
 
 function changeShape(note){
 
-//TODO: Add another IF Statement that first tests the headgroup, if "0" it changes, if not "0" it changes it to "0" instead
-//In other words, we could theoretically toggle the shapes!
+//TODO: Possible add another IF Statement that first tests the headgroup, if "0" it changes, if not "0" it changes it to "0" instead
 
-      if (note.pitch >= 36) {note.headGroup = 1;}     //1   Crosses
-      if (note.pitch >= 48) {note.headGroup = 18;}    //18  Squares
-      if (note.pitch >= 60) {note.headGroup = 0;}     //0   Circles    
-      if (note.pitch >= 72) {note.headGroup = 5;}     //5   Triangles
-      if (note.pitch >= 84) {note.headGroup = 10;}    //10  Diamonds
-      if (note.pitch >= 96) {note.headGroup = 15;}    //15  Slashes
+            if (note.pitch >= 36) {note.headGroup = 1;}     //1   Crosses
+            if (note.pitch >= 48) {note.headGroup = 18;}    //18  Squares
+            if (note.pitch >= 60) {note.headGroup = 0;}     //0   Circles    
+            if (note.pitch >= 72) {note.headGroup = 5;}     //5   Triangles
+            if (note.pitch >= 84) {note.headGroup = 10;}    //10  Diamonds
+            if (note.pitch >= 96) {note.headGroup = 15;}    //15  Slashes
+     
       }
 
 //====================================================================================
