@@ -2,6 +2,12 @@
 
 # Figurenotes Stage 3 (in MuseScore 4)
 
+- [Downloading the plugin](#downloading-the-plugin)
+- [Installing the plugin](#installing-the-plugin)
+- [Using the plugin](#using-the-plugin)
+- [Removing the plugin](#removing-the-plugin)
+- [Get support](#i-have-a-problem-with-installing-or-using-the-plugin-what-now)
+
 ## Downloading the plugin
 
 ### On Musescore.com
