@@ -16,7 +16,7 @@ On the plugin page (https://musescore.org/en/project/figurenotes-shapes-and-colo
 
 ### From Github
 
-Right click this link (https://github.com/captainNerdBeard/FigurenotesMS/blob/main/Figurenotes%20MS4.zip) and select 'Save link as'. Your browser will download the required zip file.
+Click the link under 'Releases' on in the right hand column (https://github.com/captainNerdBeard/FigurenotesMS/releases/tag/release-1) and click the 'FigurenotesPlugin.zip' link in the next screen. Your browser will download the required zip file.
 
 ## Installing the plugin
 
