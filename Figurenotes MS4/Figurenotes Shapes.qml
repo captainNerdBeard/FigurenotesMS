@@ -1,7 +1,6 @@
-//====================================================================================
+//=================================================================================
 //  Figurenotes Shapes QML Plugin for Drake Music Scotland
-//  (C)2020-23 Bas Gentenaar (figurenotes@drakemusicscotland.org)
-//
+//  
 //  Drake Music Scotland Figurenotes Project Figurenotes (C) Kaarlo Uusitalo, 1996 
 //  Figurenotes applications (C) Markku Kaikkonen and Kaarlo Uusitalo, 1998 
 //  
@@ -16,16 +15,12 @@
 //  it under the terms of the GNU General Public License version 2
 //  as published by the Free Software Foundation and appearing in
 //  the file LICENCE.GPL
-//===================================================================================
+//=================================================================================
 
 import QtQuick 2.9
 import MuseScore 3.0
 
 MuseScore {
-
-//====================================================================================
-// We Identify the plugin and give it a place in the MuseScore menu!
-//====================================================================================
 
       version:  "4.0"
       description: qsTr("This plugin shapes noteheads in the selection depending on their pitch as per the Figurenotes System")
@@ -41,10 +36,6 @@ MuseScore {
                   }
       }
 
-//====================================================================================
-// Apply the given function to all notes in selection or, if nothing is selected, in the entire score
-//====================================================================================
-
 function applyToNotesInSelection(func) {
       curScore.startCmd();
       var cursor = curScore.newCursor();
@@ -54,21 +45,15 @@ function applyToNotesInSelection(func) {
       var endTick;
       var fullScore = false;
 
-      //If nothing is selected, use the whole score:
       if (!cursor.segment) {
             fullScore = true;
-            startStaff = 0; // start with 1st staff
-            endStaff = curScore.nstaves - 1; // and end with last
+            startStaff = 0;
+            endStaff = curScore.nstaves - 1;
       } 
-      //Otherwise, use only the selected bits:
       else {
             startStaff = cursor.staffIdx;
             cursor.rewind(2);
             if (cursor.tick === 0) {
-                  // this happens when the selection includes
-                  // the last measure of the score.
-                  // rewind(2) goes behind the last segment (where
-                  // there's none) and sets tick=0
                   endTick = curScore.lastSegment.tick + 1;
             } else {
                   endTick = cursor.tick;
@@ -76,21 +61,19 @@ function applyToNotesInSelection(func) {
             endStaff = cursor.staffIdx;
       }
       
-      // console.log(startStaff + " - " + endStaff + " - " + endTick)
       for (var staff = startStaff; staff <= endStaff; staff++) {
             for (var voice = 0; voice < 4; voice++) {
-                  cursor.rewind(1); // sets voice to 0
-                  cursor.voice = voice; //voice has to be set after goTo
+                  cursor.rewind(1); 
+                  cursor.voice = voice;
                   cursor.staffIdx = staff;
 
                   if (fullScore)
-                        cursor.rewind(0) // if no selection, beginning of score
+                        cursor.rewind(0)
 
                   while (cursor.segment && (fullScore || cursor.tick < endTick)) {
                         if (cursor.element && cursor.element.type === Element.CHORD) {
                               var graceChords = cursor.element.graceNotes;
                               for (var i = 0; i < graceChords.length; i++) {
-                                    // iterate through all grace chords
                                     var graceNotes = graceChords[i].notes;
                                     for (var j = 0; j < graceNotes.length; j++)
                                           func(graceNotes[j]);
@@ -98,7 +81,7 @@ function applyToNotesInSelection(func) {
                               var notes = cursor.element.notes;
                               for (var k = 0; k < notes.length; k++) {
                                     var note = notes[k];
-                                    func(note); // <-- DO THE THING TO THE NOTE
+                                    func(note); 
                               }
                         }
                         cursor.next();
@@ -108,13 +91,7 @@ function applyToNotesInSelection(func) {
       
 }
 
-//====================================================================================
-// Do this to all notes in the selection:
-//====================================================================================
-
 function changeShape(note){
-
-//TODO: Possible add another IF Statement that first tests the headgroup, if "0" it changes, if not "0" it changes it to "0" instead
 
             if (note.pitch >= 36) {note.headGroup = 1;}     //1   Crosses
             if (note.pitch >= 48) {note.headGroup = 18;}    //18  Squares
@@ -123,10 +100,6 @@ function changeShape(note){
             if (note.pitch >= 84) {note.headGroup = 10;}    //10  Diamonds
             if (note.pitch >= 96) {note.headGroup = 15;}    //15  Slashes
       }
-
-//====================================================================================
-// Run this plugin when we choose it from the menu
-//====================================================================================
 
       onRun: {
             console.log("Figurenotes Shapes!");
