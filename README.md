@@ -20,7 +20,7 @@ Right click this link (https://github.com/captainNerdBeard/FigurenotesMS/blob/ma
 
 ## Installing the plugin
 
-1. Extra the .zip file by right clicking it and selecting 'Extract', after extracting you will see a folder named 'Figurenotes MS4' which contains 2 plugin files and a thumbnail image.
+1. Extract the .zip file by right clicking it and selecting 'Extract', after extracting you will see a folder named 'Figurenotes MS4' which contains 2 plugin files and a thumbnail image.
 2. Find your Musescore plugin folder. Usually, this is "C:/Program Files/Musescore/plugins" on PC or ~/documents/musescore4/plugins on Mac. If you cannot find your plugins folder, open Musescore, Select Edit / Preferences - if you select the Folder option on the left, you'll find a list of file locations. The location of your plugins folder can be found there.
 3. Copy the entire 'Figurenotes MS4' folder into Musescore's plugin folder.
 4. Open Musescore and go to Home / Plugins.
