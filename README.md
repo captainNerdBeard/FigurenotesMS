@@ -28,8 +28,9 @@ Click the link under 'Releases' on in the right hand column (https://github.com/
 
 ## Using the plugin
 
-1. Select the bits of the score you wish to change
-2. Go to 'Plugins/Colour Notes/Figurenotes Colours' or 'Plugins/Colour Notes/Figurenotes Shapes' and select as required
+1. Select the bits of the score you wish to change, OR, don't make any selection, and the plugin will change the whole score.
+2. If you want to select a single note, click it, and then press [Shift+Right Arrow] which will select the note in question plus the note after it. Then press [Shift+Left Arrow], this will shrink the selection to the initial note.
+3. Go to 'Plugins/Colour Notes/Figurenotes Colours' or 'Plugins/Colour Notes/Figurenotes Shapes' and select as required
 
 ## Removing the plugin
 
